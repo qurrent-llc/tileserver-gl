@@ -26,10 +26,11 @@ if [ $? -ne 0 ]; then
 fi
 
 export DISPLAY=:${displayNumber}.${screenNumber}
+export EGL_PLATFORM=x11
+export NODE_ENV="production"
 
 echo
-cd /data
-node /usr/src/app/ -p 80 "$@" &
+node . -p 80 "$@" &
 child=$!
 wait "$child"
 
